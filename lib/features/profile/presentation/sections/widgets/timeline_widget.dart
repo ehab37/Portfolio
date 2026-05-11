@@ -1,16 +1,17 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/theme/app_colors.dart';
-import 'package:portfolio/features/profile/domain/entities/education_entity.dart';
+import 'package:portfolio/features/profile/data/local_data_source.dart';
 
 class TimelineWidget extends StatelessWidget {
   const TimelineWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final educations = LocalDataSource.getEducations();
     return Column(
-      children: EducationEntity.educationItems.map((item) {
-        final index = EducationEntity.educationItems.indexOf(item);
+      children: educations.map((item) {
+        final index = educations.indexOf(item);
         return FadeInLeft(
           delay: Duration(milliseconds: 200 * index),
           child: IntrinsicHeight(
@@ -20,7 +21,7 @@ class TimelineWidget extends StatelessWidget {
                 Column(
                   children: [
                     Icon(Icons.verified, color: AppColors.primary),
-                    if (index != EducationEntity.educationItems.length - 1)
+                    if (index != educations.length - 1)
                       Expanded(
                         child: Container(
                           width: 2,

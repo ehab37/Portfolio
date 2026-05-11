@@ -4,26 +4,34 @@ import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/core/utils/constants.dart';
 
 class MobileNavBar extends StatelessWidget {
-  const MobileNavBar({super.key, required this.sectionKeys});
+  const MobileNavBar({
+    super.key,
+    required this.sectionKeys,
+    required this.activeSection,
+  });
 
   final Map<String, GlobalKey> sectionKeys;
+  final String activeSection;
 
   @override
   Widget build(BuildContext context) {
+    final keys = [
+      AppConstants.aboutKey,
+      AppConstants.skillsKey,
+      AppConstants.projectsKey,
+      AppConstants.educationKey,
+      AppConstants.contactKey,
+    ];
+    final currentIndex = keys.indexOf(activeSection);
+
     return BottomNavigationBar(
       backgroundColor: AppColors.surface,
       selectedItemColor: AppColors.primary,
       unselectedItemColor: Colors.white54,
+      currentIndex: currentIndex != -1 ? currentIndex : 0,
       type: BottomNavigationBarType.fixed,
       onTap: (index) {
-        final keys = [
-          sectionKeys[AppConstants.aboutKey]!,
-          sectionKeys[AppConstants.skillsKey]!,
-          sectionKeys[AppConstants.projectsKey]!,
-          sectionKeys[AppConstants.educationKey]!,
-          sectionKeys[AppConstants.contactKey]!,
-        ];
-        scrollToSection(keys[index]);
+        scrollToSection(sectionKeys[keys[index]]!);
       },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.person), label: 'About'),

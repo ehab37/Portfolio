@@ -30,7 +30,7 @@ class ProjectsSection extends StatelessWidget {
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: LocalDataSource.projects.length,
+                itemCount: LocalDataSource.getProjects().length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: isDesktop ? 3 : (isTablet ? 2 : 1),
                   crossAxisSpacing: 30,
@@ -41,7 +41,7 @@ class ProjectsSection extends StatelessWidget {
                   return FadeInUp(
                     delay: Duration(milliseconds: 200 * index),
                     child: ProjectCard(
-                      project: LocalDataSource.projects[index],
+                      project: LocalDataSource.getProjects()[index],
                     ),
                   );
                 },

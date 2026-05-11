@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/core/utils/constants.dart';
-
 import 'nav_item.dart';
 
 class DesktopNavBar extends StatelessWidget {
   final ScrollController scrollController;
   final Map<String, GlobalKey> sectionKeys;
+  final String activeSection;
 
   const DesktopNavBar({
     super.key,
     required this.scrollController,
     required this.sectionKeys,
+    required this.activeSection,
   });
 
   @override
@@ -30,15 +31,35 @@ class DesktopNavBar extends StatelessWidget {
             ),
           ),
           Spacer(),
-          NavItem('About', sectionKeys[AppConstants.aboutKey]),
+          NavItem(
+            'About',
+            sectionKeys[AppConstants.aboutKey],
+            isSelected: activeSection == AppConstants.aboutKey,
+          ),
           const SizedBox(width: 20),
-          NavItem('Skills', sectionKeys[AppConstants.skillsKey]),
+          NavItem(
+            'Skills',
+            sectionKeys[AppConstants.skillsKey],
+            isSelected: activeSection == AppConstants.skillsKey,
+          ),
           const SizedBox(width: 20),
-          NavItem('Projects', sectionKeys[AppConstants.projectsKey]),
+          NavItem(
+            'Projects',
+            sectionKeys[AppConstants.projectsKey],
+            isSelected: activeSection == AppConstants.projectsKey,
+          ),
           const SizedBox(width: 20),
-          NavItem('Education', sectionKeys[AppConstants.educationKey]),
+          NavItem(
+            'Education',
+            sectionKeys[AppConstants.educationKey],
+            isSelected: activeSection == AppConstants.educationKey,
+          ),
           const SizedBox(width: 20),
-          NavItem('Contact', sectionKeys[AppConstants.contactKey]),
+          NavItem(
+            'Contact',
+            sectionKeys[AppConstants.contactKey],
+            isSelected: activeSection == AppConstants.contactKey,
+          ),
         ],
       ),
     );

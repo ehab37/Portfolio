@@ -43,10 +43,9 @@ class _ProjectCardState extends State<ProjectCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(
-                Icons.folder_open,
-                size: 40,
-              ),
+              widget.project.image == null
+                  ? Icon(Icons.folder_open, size: 40)
+                  : Image.asset(widget.project.image!),
               const SizedBox(height: 20),
               Text(
                 widget.project.title,

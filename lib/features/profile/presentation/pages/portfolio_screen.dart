@@ -28,6 +28,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     AppConstants.contactKey: GlobalKey(),
   };
   bool showBackToTop = false;
+  String activeSection = AppConstants.aboutKey;
 
   @override
   void dispose() {
@@ -38,13 +39,42 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   @override
   void initState() {
     super.initState();
-    scrollController.addListener(() {
-      if (scrollController.offset > 300) {
-        if (!showBackToTop) setState(() => showBackToTop = true);
-      } else {
-        if (showBackToTop) setState(() => showBackToTop = false);
+    scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    // Back to top button visibility
+    if (scrollController.offset > 300) {
+      if (!showBackToTop) setState(() => showBackToTop = true);
+    } else {
+      if (showBackToTop) setState(() => showBackToTop = false);
+    }
+
+    // Active section detection
+    String bestMatch = activeSection;
+    double minDistance = double.infinity;
+
+    for (var entry in sectionKeys.entries) {
+      final context = entry.value.currentContext;
+      if (context != null) {
+        final box = context.findRenderObject() as RenderBox;
+        final offset = box.localToGlobal(Offset.zero).dy;
+
+        // We consider a section active if its top is closest to the top of the screen (0)
+        // Adjusting with a small offset (e.g., 100) to make the transition feel more natural
+        final distance = (offset - 100).abs();
+        if (distance < minDistance) {
+          minDistance = distance;
+          bestMatch = entry.key;
+        }
       }
-    });
+    }
+
+    if (activeSection != bestMatch) {
+      setState(() {
+        activeSection = bestMatch;
+      });
+    }
   }
 
   @override
@@ -53,7 +83,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
 
     return Scaffold(
       bottomNavigationBar: !isDesktop
-          ? MobileNavBar(sectionKeys: sectionKeys)
+          ? MobileNavBar(sectionKeys: sectionKeys, activeSection: activeSection)
           : null,
       floatingActionButton: showBackToTop
           ? FloatingActionButton(
@@ -92,6 +122,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
               child: DesktopNavBar(
                 scrollController: scrollController,
                 sectionKeys: sectionKeys,
+                activeSection: activeSection,
               ),
             ),
           ),
