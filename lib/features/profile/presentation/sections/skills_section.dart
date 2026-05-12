@@ -29,12 +29,12 @@ class SkillsSection extends StatelessWidget {
                 spacing: 20,
                 runSpacing: 20,
                 alignment: WrapAlignment.center,
-                children: List.generate(LocalDataSource.getSkills().length, (
+                children: List.generate(LocalDataSource.getSkills.length, (
                   index,
                 ) {
                   return FadeInUp(
                     delay: Duration(milliseconds: 100 * index),
-                    child: SkillChip(skill: LocalDataSource.getSkills()[index]),
+                    child: SkillChip(skill: LocalDataSource.getSkills[index]),
                   );
                 }),
               ),

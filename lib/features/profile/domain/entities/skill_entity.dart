@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SkillEntity {
   final String name;
-  final IconData? icon;
+  final FaIconData? icon;
 
   SkillEntity({required this.name, this.icon});
 }

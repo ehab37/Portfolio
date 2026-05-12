@@ -4,8 +4,8 @@ import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/core/utils/assets_constants.dart';
 import 'package:portfolio/features/profile/presentation/sections/widgets/content.dart';
 
-class MobileHero extends StatelessWidget {
-  const MobileHero({
+class MobileAbout extends StatelessWidget {
+  const MobileAbout({
     super.key,
     required this.onViewProjectsPressed,
     required this.onContactPressed,

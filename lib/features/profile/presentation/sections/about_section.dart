@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'widgets/desktop_hero.dart';
-import 'widgets/mobile_hero.dart';
+import 'widgets/desktop_about.dart';
+import 'widgets/mobile_about.dart';
 
-class HeroSection extends StatelessWidget {
+class AboutSection extends StatelessWidget {
   final VoidCallback onContactPressed;
   final VoidCallback onViewProjectsPressed;
 
-  const HeroSection({
+  const AboutSection({
     super.key,
     required this.onContactPressed,
     required this.onViewProjectsPressed,
@@ -26,11 +26,11 @@ class HeroSection extends StatelessWidget {
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 1200),
         child: isDesktop
-            ? DesktopHero(
+            ? DesktopAbout(
                 onViewProjectsPressed: onViewProjectsPressed,
                 onContactPressed: onContactPressed,
               )
-            : MobileHero(
+            : MobileAbout(
                 onViewProjectsPressed: onViewProjectsPressed,
                 onContactPressed: onContactPressed,
               ),

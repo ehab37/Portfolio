@@ -4,7 +4,7 @@ import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/core/utils/constants.dart';
 import 'package:portfolio/features/profile/presentation/sections/contact_section.dart';
 import 'package:portfolio/features/profile/presentation/sections/education_section.dart';
-import 'package:portfolio/features/profile/presentation/sections/hero_section.dart';
+import 'package:portfolio/features/profile/presentation/sections/about_section.dart';
 import 'package:portfolio/features/profile/presentation/sections/projects_section.dart';
 import 'package:portfolio/features/profile/presentation/sections/skills_section.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -99,7 +99,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             controller: scrollController,
             child: Column(
               children: [
-                HeroSection(
+                AboutSection(
                   key: sectionKeys[AppConstants.aboutKey],
                   onContactPressed: () =>
                       scrollToSection(sectionKeys[AppConstants.contactKey]!),

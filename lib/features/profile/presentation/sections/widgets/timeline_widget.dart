@@ -8,7 +8,7 @@ class TimelineWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final educations = LocalDataSource.getEducations();
+    final educations = LocalDataSource.getEducations;
     return Column(
       children: educations.map((item) {
         final index = educations.indexOf(item);

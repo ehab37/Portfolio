@@ -1,32 +1,50 @@
-import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/core/utils/assets_constants.dart';
 import 'package:portfolio/features/profile/domain/entities/education_entity.dart';
 import 'package:portfolio/features/profile/domain/entities/project_entity.dart';
 import 'package:portfolio/features/profile/domain/entities/skill_entity.dart';
 
 class LocalDataSource {
-  static List<SkillEntity> getSkills() {
+  static List<SkillEntity> get getSkills {
     return [
-      SkillEntity(name: 'OOP principles', icon: Icons.data_object),
+      SkillEntity(name: ' OOP principles', icon: FontAwesomeIcons.code),
       SkillEntity(
-        name: 'State Management (Bloc, provider)',
-        icon: Icons.architecture,
+        name: ' State Management (Bloc, provider)',
+        icon: FontAwesomeIcons.gears,
       ),
-      SkillEntity(name: 'RESTful API Integration', icon: Icons.api),
-      SkillEntity(name: 'Dependency Injection (GetIt)', icon: Icons.extension),
-      SkillEntity(name: 'Firebase and Hive', icon: Icons.storage),
-      SkillEntity(name: 'Git - GitHub', icon: Icons.gite_sharp),
-      SkillEntity(name: 'Localization', icon: Icons.language),
-      SkillEntity(name: 'Responsive/Adaptive UI/UX', icon: Icons.desktop_mac),
-      SkillEntity(name: 'Unit Testing', icon: Icons.bug_report),
-      SkillEntity(name: 'Code Generation (build_runner)', icon: Icons.settings),
-      SkillEntity(name: 'Clean Architecture', icon: Icons.layers),
-      SkillEntity(name: 'Payment Integration', icon: Icons.payment),
-      SkillEntity(name: 'Published Apps', icon: Icons.shop),
+      SkillEntity(
+        name: ' RESTful API Integration',
+        icon: FontAwesomeIcons.link,
+      ),
+      SkillEntity(
+        name: 'Dependency Injection (GetIt)',
+        icon: FontAwesomeIcons.puzzlePiece,
+      ),
+      SkillEntity(name: 'Firebase and Hive', icon: FontAwesomeIcons.database),
+      SkillEntity(name: 'Git - GitHub', icon: FontAwesomeIcons.gitAlt),
+      SkillEntity(name: 'Localization', icon: FontAwesomeIcons.language),
+      SkillEntity(
+        name: 'Responsive & Adaptive UI/UX',
+        icon: FontAwesomeIcons.desktop,
+      ),
+      SkillEntity(name: 'Unit Testing', icon: FontAwesomeIcons.bug),
+      SkillEntity(
+        name: 'Code Generation (build_runner)',
+        icon: FontAwesomeIcons.terminal,
+      ),
+      SkillEntity(
+        name: 'Clean Architecture',
+        icon: FontAwesomeIcons.layerGroup,
+      ),
+      SkillEntity(
+        name: 'Payment Integration',
+        icon: FontAwesomeIcons.creditCard,
+      ),
+      SkillEntity(name: 'Published Apps', icon: FontAwesomeIcons.googlePlay),
     ];
   }
 
-  static List<ProjectEntity> getProjects() {
+  static List<ProjectEntity> get getProjects {
     return [
       ProjectEntity(
         title: 'Akla (Food App)',
@@ -59,7 +77,7 @@ class LocalDataSource {
     ];
   }
 
-  static List<EducationEntity> getEducations() {
+  static List<EducationEntity> get getEducations {
     return [
       EducationEntity(
         title: 'B.Sc. Computers and Informatics',

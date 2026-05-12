@@ -1,11 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/functions/download_cv.dart';
 import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/core/utils/assets_constants.dart';
 import 'package:portfolio/core/utils/constants.dart';
 import 'package:portfolio/core/utils/text_style_helper.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Content extends StatelessWidget {
   const Content({
@@ -113,14 +113,7 @@ class Content extends StatelessWidget {
                 child: const Text("Contact Me"),
               ),
               TextButton.icon(
-                onPressed: () async {
-                  // In a real app, this would open the PDF.
-                  // For web, it might trigger a download.
-                  final Uri url = Uri.parse(AssetsConstants.cvPath);
-                  if (!await launchUrl(url)) {
-                    debugPrint('Could not launch $url');
-                  }
-                },
+                onPressed: () => downloadCV(AssetsConstants.cvPath),
                 icon: const Icon(Icons.download, color: AppColors.primary),
                 label: const Text(
                   "Download CV",
